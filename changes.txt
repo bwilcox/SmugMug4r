@@ -1,0 +1,3 @@
+2012-06-17 Bill Wilcox
+  Copied in the SmugMug4r files and set the git repository.
+  Created this log to document what I do with this.
