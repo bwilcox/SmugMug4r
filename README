@@ -1,0 +1,66 @@
+SmugMug4r
+    by Jeff Barriault
+    http://rubyforge.org/projects/smugmug4r/
+
+== DESCRIPTION:
+  
+A wrapper around the 1.2.0 JSON API at SmugMug (http://smugmug.com).
+
+== INSTALL:
+
+Under the projects vendor/plugins directory, create a new directory called
+SmugMug4r and copy all files/folders there.
+
+== USAGE:
+
+The first thing you need to do is establish a session. You begin by initializing
+a new Session object using your API key. Then you use one of the login methods.
+
+    # Establish a session
+    session = Session.new("YOUR-API-KEY")
+    session.login_anonymously
+            - or -
+    session.login("username", "password")
+
+    # Don't forget to logout when you're done
+    session.logout
+
+Once you have a logged in session you can use it to get Albums, Categories,
+Images, etc. from SmugMug. The methods closely follow the API's method names.
+For instance, to return an array of Albums using anonymous login you would do
+this:
+
+    # Establish a session
+    session = Session.new("YOUR-API-KEY")
+    session.login_anonymously
+    
+    # Return an array of Albums
+    albums = Albums.get(session, {:NickName => "nickname", :Heavy => 1})
+    albums.each do |album|
+       $stdout.print(album.title, "\n")
+    end
+
+Most of the method signatures require session and also allow an optional options
+hash. In the example above you can see that we're passing the NickName and
+Heavy optional parameters to the method. See the actual class documentation for
+more examples.
+
+== LICENSE:
+
+Copyright 2007, 2008 Jeff Barriault
+
+    This file is part of SmugMug4r.
+
+    SmugMug4r is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    SmugMug4r is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with SmugMug4r.  If not, see <http://www.gnu.org/licenses/>.
+
