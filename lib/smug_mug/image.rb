@@ -6,41 +6,41 @@ module SmugMug4r
     # === Attributes
     # * +id+ -- image id
     # * +key+ -- image key
-    class Image < ActionWebService::Struct
-      member :id,            :int
-      member :key,           :string
-      member :album_id,      :int
-      member :album_key,     :string
-      member :file_name,     :string
-      member :caption,       :string
-      member :keywords,      :string
-      member :position,      :int
-      member :date,          :string
-      member :format,        :string
-      member :serial,        :int
-      member :hidden,        :boolean
-      member :size,          :int
-      member :width,         :int
-      member :height,        :int
-      member :md5sum,        :string
-      member :last_updated,  :string
-      member :album_url,     :string
-      member :tiny_url,      :string
-      member :thumb_url,     :string
-      member :small_url,     :string
-      member :medium_url,    :string
-      member :large_url,     :string
-      member :x_large_url,   :string
-      member :x2_large_url,  :string
-      member :x3_large_url,  :string
-      member :original_url,  :string
-      member :video320_url,  :string
-      member :video640_url,  :string
-      member :video960_url,  :string
-      member :video1280_url, :string
-      member :latitude,      :string
-      member :longitude,    :string
-      member :altitude,      :string
+    class Image < ActiveResource::Base
+      #member :id,            :int
+      #member :key,           :string
+      #member :album_id,      :int
+      #member :album_key,     :string
+      #member :file_name,     :string
+      #member :caption,       :string
+      #member :keywords,      :string
+      #member :position,      :int
+      #member :date,          :string
+      #member :format,        :string
+      #member :serial,        :int
+      #member :hidden,        :boolean
+      #member :size,          :int
+      #member :width,         :int
+      #member :height,        :int
+      #member :md5sum,        :string
+      #member :last_updated,  :string
+      #member :album_url,     :string
+      #member :tiny_url,      :string
+      #member :thumb_url,     :string
+      #member :small_url,     :string
+      #member :medium_url,    :string
+      #member :large_url,     :string
+      #member :x_large_url,   :string
+      #member :x2_large_url,  :string
+      #member :x3_large_url,  :string
+      #member :original_url,  :string
+      #member :video320_url,  :string
+      #member :video640_url,  :string
+      #member :video960_url,  :string
+      #member :video1280_url, :string
+      #member :latitude,      :string
+      #member :longitude,    :string
+      #member :altitude,      :string
       
       # Converts a smugmug JSON string into an Item object.
       def self.decode(json)
@@ -154,7 +154,7 @@ module SmugMug4r
 
         json = session.call("smugmug.images.get", parameters)
         images = []
-        json["Images"].each do |image|
+        json["Album"]["Images"].each do |image|
           images << Image.decode(image)
         end
         return images
@@ -170,7 +170,7 @@ module SmugMug4r
         end
         parameters.merge!(options)
 
-        json = session.call("smugmug.images.getInfo", parameters)
+        json = session.call("smugmug.images.getEXIF", parameters)
         # TODO Return an exif object
         return json
       end

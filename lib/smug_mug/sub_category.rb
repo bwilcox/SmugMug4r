@@ -7,10 +7,10 @@ module SmugMug4r
     # * +id+ -- The SubCategory ID.
     # * +name+ -- The SubCategory Name.
     # * +albums+ -- an array of Album objects
-    class SubCategory < ActionWebService::Struct
-      member :id,     :int
-      member :name,   :string
-      member :albums, [Album]
+    class SubCategory < ActiveResource::Base
+      #member :id,     :int
+      #member :name,   :string
+      #member :albums, [Album]
       
       # Converts a smugmug JSON string into a SubCategory object.
       def self.decode(json)

@@ -1,6 +1,7 @@
 require 'rake'
+require 'rdoc/task'
 require 'rake/testtask'
-require 'rake/rdoctask'
+
 
 desc 'Default: run unit tests.'
 task :default => :test
@@ -13,7 +14,7 @@ Rake::TestTask.new(:test) do |t|
 end
 
 desc 'Generate documentation for the smugmug plugin.'
-Rake::RDocTask.new(:rdoc) do |rdoc|
+RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title    = 'SmugMug4r'
   rdoc.options << '--line-numbers' << '--inline-source'

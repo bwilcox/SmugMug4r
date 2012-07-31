@@ -151,7 +151,7 @@ module SmugMug4r
 
       def path_for_params(params)
         query_string = "?" + params.inject([]) { |qs, pair| qs << "#{CGI.escape(pair[0].to_s)}=#{CGI.escape(pair[1].to_s)}"; qs }.join("&")
-        query_string = "/services/api/json/1.2.1/" + query_string
+        query_string = "/services/api/json/1.3.0/" + query_string
         puts query_string if ENV["RAILS_ENV"] == "development"
         return query_string
       end

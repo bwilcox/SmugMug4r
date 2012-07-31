@@ -1,3 +1,23 @@
 2012-06-17 Bill Wilcox
   Copied in the SmugMug4r files and set the git repository.
   Created this log to document what I do with this.
+
+2012-07-29 Bill Wilcox
+  Changed dependency on activewebservice to activeresource.
+  Added parseconfig dependency as a way to put config information in a single file. This is
+    used specifically for the tests and should not be required in normal operation.
+  Added CGI from Ruby standard lib as a requirement.
+  Created test for anonymous login *WORKS*
+
+2012-07-30 Bill Wilcox
+  Created test for listing albums from an anonymous session *WORKS*
+  Updated to use the 1.3.0 api endpoint.
+  Created test to open the first public album and get the image listing. *WORKS*
+  Created test to get the first image in the first public album and display the small_url *WORKS*
+  Updated Image retrieval to account for the Images array being inside an Album.
+  Created test to get a specific image attribute using Extras. *WORKS*
+
+  
+
+
+

@@ -1,6 +1,8 @@
 require 'net/https'
 require 'uri'
 require 'json'
+require 'active_resource'
+require 'cgi'
 
 require 'smug_mug/session'
 require 'smug_mug/album'
